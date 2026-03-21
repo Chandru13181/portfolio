@@ -11,6 +11,9 @@ import Cursor from "./components/Cursor";
 import Background3D from "./components/Background3D";
 import AIChatFloat from "./components/AIChatFloat";
 import "./App.css";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import AIChatFloat from "./components/AIChatFloat";
 
 function App() {
   return (
@@ -27,6 +30,7 @@ function App() {
         <div id="testimonials"><Testimonials /></div>
         <div id="contact"><Contact /></div>
         <Footer />
+         <AIChatFloat />
         <AIChatFloat />
       </div>
     </div>
