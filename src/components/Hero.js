@@ -164,7 +164,16 @@ function Hero() {
         >
           
           {/* Primary btn */}
-             <motion.a href="/resume.pdf" download="Chandru_Resume.pdf"
+             <motion.a 
+  href={process.env.PUBLIC_URL + "/resume.pdf"} 
+  download="Chandru_Resume.pdf"
+  onClick={(e) => {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = process.env.PUBLIC_URL + '/resume.pdf';
+    link.download = 'Chandru_Resume.pdf';
+    link.click();
+  }}
             whileHover={{
               scale:1.06, y:-6,
               boxShadow:'0 30px 60px rgba(124,58,237,0.45)',
