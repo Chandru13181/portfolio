@@ -1,3 +1,12 @@
 [build]
   command = "CI= react-scripts build"
   publish = "build"
+  [build]
+  command = "CI= react-scripts build"
+  publish = "build"
+
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Content-Disposition = "attachment"
+    Content-Type = "application/pdf"
