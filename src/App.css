@@ -52,8 +52,7 @@ body {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 800;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   color: white;
   line-height: 1.2;
   margin-top: 8px;
@@ -97,7 +96,7 @@ body {
 
 .about-text h3 {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
   font-weight: 800;
   margin-bottom: 16px;
   color: white;
@@ -330,7 +329,7 @@ body {
 
 .contact-info h3 {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
   font-weight: 800;
   margin-bottom: 16px;
   background: linear-gradient(135deg, #a78bfa, #f472b6);
