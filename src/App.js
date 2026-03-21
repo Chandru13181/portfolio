@@ -9,6 +9,7 @@ import Contact from "./components/contact";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
 import Background3D from "./components/Background3D";
+import AIChatFloat from "./components/AIChatFloat";
 import "./App.css";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <div id="testimonials"><Testimonials /></div>
         <div id="contact"><Contact /></div>
         <Footer />
+        <AIChatFloat />
       </div>
     </div>
   );
