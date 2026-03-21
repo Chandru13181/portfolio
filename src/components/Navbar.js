@@ -244,7 +244,7 @@ export default function Navbar() {
                   }}
                 >{link}</motion.a>
               ))}
-              <motion.a href="/cv.pdf" download
+              <motion.a href="/resume.pdf" download
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}

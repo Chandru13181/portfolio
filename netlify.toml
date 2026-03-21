@@ -1,9 +1,7 @@
 [build]
   command = "CI= react-scripts build"
   publish = "build"
-  [build]
-  command = "CI= react-scripts build"
-  publish = "build"
+  functions = "netlify/functions"
 
 [[headers]]
   for = "/*.pdf"

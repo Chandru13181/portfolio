@@ -47,147 +47,117 @@ const experiences = [
 function Experience() {
   return (
     <section id="experience" style={{
-      padding: '100px 80px',
+      padding: '90px 60px',
       background: 'rgba(5,2,16,0.85)',
       backdropFilter: 'blur(20px)',
       position: 'relative',
     }}>
-      {/* Particles */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.05) 0%, transparent 50%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.05) 0%, transparent 50%)', pointerEvents: 'none' }}/>
 
+      {/* Heading — same style as About/Skills/Contact */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.55 }}
         viewport={{ once: true }}
-        style={{ textAlign: 'center', marginBottom: '70px' }}
+        style={{ textAlign: 'center', marginBottom: 52 }}
       >
-        <span style={{
-          color: '#f59e0b', fontWeight: '700', fontSize: '0.8rem',
-          letterSpacing: '4px', textTransform: 'uppercase',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px',
-          marginBottom: '16px',
-        }}>
-          <span style={{ height: '1px', width: '40px', background: 'linear-gradient(to right, transparent, #f59e0b)' }} />
-          MY JOURNEY
-          <span style={{ height: '1px', width: '40px', background: 'linear-gradient(to left, transparent, #f59e0b)' }} />
-        </span>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: "'Inter',sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: 3, textTransform: 'uppercase', color: '#f59e0b', marginBottom: 12 }}>
+          <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg,transparent,#f59e0b)', display: 'block' }}/>
+          My Journey
+          <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg,#f59e0b,transparent)', display: 'block' }}/>
+        </div>
         <h2 style={{
-          fontFamily: "'Bricolage Grotesque', sans-serif",
-          fontSize: '2.8rem', fontWeight: '900', color: 'white',
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
+          fontWeight: 800,
+          color: 'white',
+          lineHeight: 1.2,
+          marginBottom: 12,
         }}>
-          Work <span style={{
-            background: 'linear-gradient(135deg, #a78bfa, #f472b6)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-          }}>Experience</span>
+          Work{' '}
+          <span style={{ background: 'linear-gradient(135deg, #a78bfa, #f472b6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            Experience
+          </span>
         </h2>
+        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: '#c4b5d4', maxWidth: 420, margin: '0 auto', lineHeight: 1.75 }}>
+          A journey of crafting meaningful digital experiences across design and development.
+        </p>
       </motion.div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '24px',
-        maxWidth: '1200px',
-        margin: 'auto',
-      }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', maxWidth: '1100px', margin: 'auto' }}>
         {experiences.map((e, i) => (
           <motion.div key={i}
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.12 }}
-            whileHover={{ scale: 1.03, y: -8 }}
+            transition={{ duration: 0.55, delay: i * 0.1 }}
+            whileHover={{ scale: 1.02, y: -6 }}
             viewport={{ once: true }}
             style={{
               background: 'rgba(255,255,255,0.04)',
               border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '24px',
-              padding: '36px 28px',
+              borderRadius: '20px',
+              padding: '28px 22px',
               backdropFilter: 'blur(20px)',
               position: 'relative',
               overflow: 'hidden',
               cursor: 'pointer',
-              transition: 'all 0.4s',
+              transition: 'all 0.35s',
             }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = 'rgba(124,58,237,0.08)'
-              e.currentTarget.style.borderColor = 'rgba(124,58,237,0.3)'
-              e.currentTarget.style.boxShadow = '0 30px 60px rgba(0,0,0,0.3)'
+            onMouseEnter={ev => {
+              ev.currentTarget.style.background = 'rgba(124,58,237,0.08)'
+              ev.currentTarget.style.borderColor = 'rgba(124,58,237,0.3)'
+              ev.currentTarget.style.boxShadow = '0 25px 50px rgba(0,0,0,0.3)'
             }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
-              e.currentTarget.style.boxShadow = 'none'
+            onMouseLeave={ev => {
+              ev.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+              ev.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
+              ev.currentTarget.style.boxShadow = 'none'
             }}
           >
             {/* Top color bar */}
-            <div style={{
-              position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
-              background: e.color, borderRadius: '24px 24px 0 0',
-            }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: e.color, borderRadius: '20px 20px 0 0' }}/>
 
             {/* Glow */}
-            <div style={{
-              position: 'absolute', top: '-30px', left: '-30px',
-              width: '100px', height: '100px',
-              background: `radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%)`,
-              borderRadius: '50%', pointerEvents: 'none',
-            }} />
+            <div style={{ position: 'absolute', top: '-30px', left: '-30px', width: '90px', height: '90px', background: 'radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%)', borderRadius: '50%', pointerEvents: 'none' }}/>
 
-            {/* Icon */}
-            <motion.span
-              whileHover={{ scale: 1.2, rotate: 10 }}
-              style={{ fontSize: '2.5rem', display: 'block', marginBottom: '18px', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))' }}
-            >{e.icon}</motion.span>
+            <motion.span whileHover={{ scale: 1.2, rotate: 10 }} style={{ fontSize: '2.2rem', display: 'block', marginBottom: '16px' }}>
+              {e.icon}
+            </motion.span>
 
-            {/* Title */}
-            <h3 style={{
-              fontFamily: "'Bricolage Grotesque', sans-serif",
-              color: 'white', fontSize: '1.15rem',
-              fontWeight: '800', marginBottom: '6px',
-            }}>{e.title}</h3>
+            <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: 'white', fontSize: '1rem', fontWeight: '800', marginBottom: '5px' }}>
+              {e.title}
+            </h3>
 
-            {/* Company */}
-            <p style={{
-              color: e.companyColor, fontWeight: '700',
-              fontSize: '0.88rem', marginBottom: '14px',
-            }}>{e.company}</p>
+            <p style={{ color: e.companyColor, fontWeight: '700', fontSize: '0.82rem', marginBottom: '12px' }}>
+              {e.company}
+            </p>
 
-            {/* Description */}
-            <p style={{
-              color: 'rgba(255,255,255,0.6)',
-              fontSize: '0.88rem', lineHeight: '1.75',
-              marginBottom: '20px',
-            }}>{e.desc}</p>
+            <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.84rem', lineHeight: '1.72', marginBottom: '16px' }}>
+              {e.desc}
+            </p>
 
-            {/* Highlights */}
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '18px' }}>
+            <div style={{ display: 'flex', gap: '7px', flexWrap: 'wrap', marginBottom: '14px' }}>
               {e.highlights.map((h, j) => (
-                <span key={j} style={{
-                  background: 'rgba(124,58,237,0.12)',
-                  border: '1px solid rgba(124,58,237,0.25)',
-                  color: '#a78bfa', padding: '4px 12px',
-                  borderRadius: '50px', fontSize: '0.75rem',
-                  fontWeight: '700',
-                }}>{h}</span>
+                <span key={j} style={{ background: 'rgba(124,58,237,0.12)', border: '1px solid rgba(124,58,237,0.25)', color: '#a78bfa', padding: '3px 10px', borderRadius: '50px', fontSize: '0.72rem', fontWeight: '700' }}>
+                  {h}
+                </span>
               ))}
             </div>
 
-            {/* Year */}
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              background: 'rgba(255,255,255,0.06)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              color: 'rgba(255,255,255,0.6)',
-              padding: '7px 16px', borderRadius: '50px',
-              fontSize: '0.8rem', fontWeight: '700',
-            }}>📅 {e.year}</div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.55)', padding: '6px 14px', borderRadius: '50px', fontSize: '0.76rem', fontWeight: '700' }}>
+              📅 {e.year}
+            </div>
           </motion.div>
         ))}
       </div>
+
+      <style>{`
+        @media(max-width:768px){
+          #experience { padding: 60px 20px !important; }
+          #experience > div:last-child { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }
