@@ -166,8 +166,8 @@ function Hero() {
           {/* Primary btn */}
   {/* Primary btn */}
 <motion.a
-  href="/resume.pdf"
-  download
+  href="https://raw.githubusercontent.com/Chandru13181/portfolio/main/public/resume.pdf"
+  download="Chandru_Resume.pdf"
             whileHover={{
               scale:1.06, y:-6,
               boxShadow:'0 30px 60px rgba(124,58,237,0.45)',
@@ -186,7 +186,7 @@ function Hero() {
           >
           <span>⬇️</span>
            Download CV
-          </motion.a>
+          </>
           
 
           {/* Secondary btn */}
