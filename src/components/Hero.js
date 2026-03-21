@@ -16,7 +16,7 @@ function TypewriterText() {
     } else if (!deleting && displayed.length === word.length) {
       timeout = setTimeout(() => setDeleting(true), 2000)
     } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 50)        
+      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 50)
     } else {
       setDeleting(false)
       setIndex((index + 1) % words.length)
@@ -40,6 +40,15 @@ function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -100])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
+  const handleDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/resume.pdf'
+    link.setAttribute('download', 'Chandru_Resume.pdf')
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <section ref={ref} style={{
       minHeight: '100vh',
@@ -58,7 +67,7 @@ function Hero() {
       ].map((orb, i) => (
         <div key={i} style={{
           position:'absolute', width:orb.w, height:orb.h,
-          background:`radial-gradient(circle, ${orb.bg}, transparent 70%)`,       
+          background:`radial-gradient(circle, ${orb.bg}, transparent 70%)`,
           top:orb.top, right:orb.right, bottom:orb.bottom, left:orb.left,
           borderRadius:'50%', pointerEvents:'none',
           animation:`orbAnim ${orb.dur} ease-in-out infinite ${orb.rev?'reverse':''}`,
@@ -92,8 +101,8 @@ function Hero() {
           transition={{ duration:0.8, type:'spring', bounce:0.6 }}
           style={{
             display:'inline-flex', alignItems:'center', gap:'10px',
-            background:'rgba(255,255,255,0.85)', backdropFilter:'blur(20px)',     
-            border:'1.5px solid rgba(124,58,237,0.2)', borderRadius:'50px',       
+            background:'rgba(255,255,255,0.85)', backdropFilter:'blur(20px)',
+            border:'1.5px solid rgba(124,58,237,0.2)', borderRadius:'50px',
             padding:'10px 24px', marginBottom:'36px',
             fontSize:'0.88rem', fontWeight:'700', color:'#7c3aed',
             boxShadow:'0 8px 32px rgba(124,58,237,0.12)',
@@ -104,7 +113,7 @@ function Hero() {
             animate={{scale:[1,1.6,1],opacity:[1,0.4,1]}}
             transition={{duration:1.5,repeat:Infinity}}
           />
-          Available for Freelance Work âœ¨
+          Available for Freelance Work ✨
         </motion.div>
 
         {/* Greeting */}
@@ -114,15 +123,15 @@ function Hero() {
           transition={{delay:0.25}}
           style={{
             fontSize:'0.82rem', fontWeight:'700', letterSpacing:'5px',
-            textTransform:'uppercase', color:'#94a3b8', marginBottom:'18px',      
+            textTransform:'uppercase', color:'#94a3b8', marginBottom:'18px',
           }}
-        > I'm a CAHNDRU</motion.p>
+        >I'm a CHANDRU</motion.p>
 
         {/* Main title */}
         <motion.h1
           initial={{opacity:0, y:50}}
           animate={{opacity:1, y:0}}
-          transition={{duration:1, delay:0.4, type:'spring', stiffness:80}}       
+          transition={{duration:1, delay:0.4, type:'spring', stiffness:80}}
           style={{
             fontFamily:"'Bricolage Grotesque', sans-serif",
             fontSize:'clamp(2.6rem, 5.5vw, 5rem)',
@@ -149,7 +158,7 @@ function Hero() {
             lineHeight:'1.8', margin:'0 auto 52px', fontWeight:'500',
           }}
         >
-          Crafting premium digital experiences through thoughtful design and clean code âœ¨
+          Crafting premium digital experiences through thoughtful design and clean code ✨
         </motion.p>
 
         {/* Buttons */}
@@ -162,12 +171,10 @@ function Hero() {
             flexWrap:'wrap', marginBottom:'80px',
           }}
         >
-          
-          {/* Primary btn */}
-  {/* Primary btn */}
-<motion.a
-  href="https://raw.githubusercontent.com/Chandru13181/portfolio/main/public/resume.pdf"
-  download="Chandru_Resume.pdf"
+
+          {/* Download CV btn */}
+          <motion.button
+            onClick={handleDownload}
             whileHover={{
               scale:1.06, y:-6,
               boxShadow:'0 30px 60px rgba(124,58,237,0.45)',
@@ -177,19 +184,19 @@ function Hero() {
               background:'linear-gradient(135deg, #7c3aed, #db2777)',
               color:'white', padding:'17px 40px',
               borderRadius:'14px', fontWeight:'800',
-              fontSize:'0.95rem', textDecoration:'none',
+              fontSize:'0.95rem',
               display:'inline-flex', alignItems:'center', gap:'10px',
               boxShadow:'0 15px 40px rgba(124,58,237,0.35)',
               fontFamily:"'Bricolage Grotesque', sans-serif",
               letterSpacing:'0.2px', transition:'box-shadow 0.3s',
+              border:'none', cursor:'pointer',
             }}
           >
-          <span>⬇️</span>
-           Download CV
-          </>
-          
+            <span>⬇️</span>
+            Download CV
+          </motion.button>
 
-          {/* Secondary btn */}
+          {/* View Work btn */}
           <motion.a href="#projects"
             whileHover={{
               scale:1.06, y:-6,
@@ -199,7 +206,7 @@ function Hero() {
             }}
             whileTap={{scale:0.97}}
             style={{
-              background:'rgba(255,255,255,0.9)', backdropFilter:'blur(20px)',    
+              background:'rgba(255,255,255,0.9)', backdropFilter:'blur(20px)',
               color:'#7c3aed', padding:'17px 40px',
               borderRadius:'14px', fontWeight:'800',
               fontSize:'0.95rem', textDecoration:'none',
@@ -210,10 +217,10 @@ function Hero() {
               letterSpacing:'0.2px', transition:'all 0.3s',
             }}
           >
-            ðŸš€ View Work
+            🚀 View Work
           </motion.a>
 
-          {/* Hire btn */}
+          {/* Hire Me btn */}
           <motion.a href="#contact"
             whileHover={{
               scale:1.06, y:-6,
@@ -231,7 +238,7 @@ function Hero() {
               letterSpacing:'0.2px', transition:'box-shadow 0.3s',
             }}
           >
-            ðŸ’¬ Hire Me
+            💬 Hire Me
           </motion.a>
         </motion.div>
 
@@ -246,10 +253,10 @@ function Hero() {
           }}
         >
           {[
-            {num:'3+', label:'Years Exp', icon:'ðŸ†'},
-            {num:'20+', label:'Projects', icon:'ðŸš€'},
-            {num:'15+', label:'Clients', icon:'ðŸ¤'},
-            {num:'5â', label:'Rating', icon:'âœ¨'},
+            {num:'3+', label:'Years Exp', icon:'🏆'},
+            {num:'20+', label:'Projects', icon:'🚀'},
+            {num:'15+', label:'Clients', icon:'🤝'},
+            {num:'5⭐', label:'Rating', icon:'✨'},
           ].map(({num,label,icon},i) => (
             <motion.div key={i}
               initial={{opacity:0, scale:0.6}}
@@ -266,7 +273,7 @@ function Hero() {
                 minWidth:'105px', transition:'box-shadow 0.3s',
               }}
             >
-              <div style={{fontSize:'1.2rem',marginBottom:'6px'}}>{icon}</div>    
+              <div style={{fontSize:'1.2rem',marginBottom:'6px'}}>{icon}</div>
               <div style={{
                 fontFamily:"'Bricolage Grotesque', sans-serif",
                 fontSize:'1.75rem', fontWeight:'900',
@@ -276,7 +283,7 @@ function Hero() {
               }}>{num}</div>
               <div style={{
                 fontSize:'0.72rem', fontWeight:'700',
-                color:'#94a3b8', textTransform:'uppercase', letterSpacing:'1px',  
+                color:'#94a3b8', textTransform:'uppercase', letterSpacing:'1px',
               }}>{label}</div>
             </motion.div>
           ))}
@@ -295,7 +302,7 @@ function Hero() {
         >
           <span style={{
             fontSize:'0.7rem', color:'#94a3b8',
-            fontWeight:'700', letterSpacing:'3px', textTransform:'uppercase',     
+            fontWeight:'700', letterSpacing:'3px', textTransform:'uppercase',
           }}>Scroll Down</span>
           <motion.div
             animate={{y:[0,12,0]}}
@@ -312,7 +319,7 @@ function Hero() {
               transition={{duration:1.5, repeat:Infinity}}
               style={{
                 width:'4px', height:'8px',
-                background:'linear-gradient(to bottom, #7c3aed, #db2777)',        
+                background:'linear-gradient(to bottom, #7c3aed, #db2777)',
                 borderRadius:'2px',
               }}
             />
