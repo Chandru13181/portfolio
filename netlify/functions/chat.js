@@ -27,10 +27,13 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: 'llama3-8b-8192',
         max_tokens: 1024,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          ...messages
-        ],
+       messages: [
+  { role: 'system', content: systemPrompt || '' },
+  ...messages.map(m => ({
+    role: m.role,
+    content: m.content || m.text || ''
+  }))
+],
       }),
     })
 
