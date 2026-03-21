@@ -250,7 +250,14 @@ function About() {
             Open to opportunities
           </motion.div>
 
-          <h3 style={{ marginBottom:'14px' }}>Passionate Creative &<br/>Problem Solver</h3>
+          <h3 style={{
+  marginBottom:'14px',
+  fontFamily:"'Plus Jakarta Sans',sans-serif",
+  fontSize:'1.15rem',
+  fontWeight:'700',
+  color:'white',
+  lineHeight:1.4,
+}}>Passionate Creative & Problem Solver</h3>
 
           <motion.p initial={{ opacity:0, y:15 }} whileInView={{ opacity:1, y:0 }} transition={{ delay:0.3 }} viewport={{ once:true }}
             style={{ color:'rgba(255,255,255,0.7)', fontSize:'0.9rem', lineHeight:'1.85', marginBottom:'12px' }}>

@@ -468,7 +468,14 @@ body {
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .contact-grid { grid-template-columns: 1fr; gap: 36px; }
 
-  .section-title { font-size: 1.5rem !important; }
+  .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  margin-top: 8px;
+}
   .section-header { margin-bottom: 36px; }
 
   .skill-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
