@@ -1,4 +1,17 @@
 exports.handler = async (event) => {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    }
+  }
+
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
@@ -22,19 +35,30 @@ exports.handler = async (event) => {
     })
 
     const data = await response.json()
+    console.log('Anthropic response:', JSON.stringify(data))
 
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
       },
-      body: JSON.stringify({ reply: data.content?.[0]?.text || 'Sorry, I could not process that.' }),
+      body: JSON.stringify({
+        reply: data.content?.[0]?.text || 'Sorry, I could not process that.'
+      }),
     }
   } catch (err) {
+    console.log('Error:', err.message)
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Internal server error', reply: 'Sorry, something went wrong. Please try again!' }),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        error: err.message,
+        reply: 'Sorry, something went wrong!'
+      }),
     }
   }
 }
