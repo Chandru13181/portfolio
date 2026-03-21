@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Float, MeshDistortMaterial, Stars } from '@react-three/drei'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import * as THREE from 'three'
 
 // ===== FULL SCREEN 3D DOTS =====
@@ -9,21 +9,19 @@ function FullScreenDots() {
   const count = 800
   const ref = useRef()
 
-  const { positions, colors, sizes } = useMemo(() => {
+  const { positions, colors } = useMemo(() => {
     const positions = new Float32Array(count * 3)
     const colors = new Float32Array(count * 3)
-    const sizes = new Float32Array(count)
 
     const colorPalette = [
-      [0.49, 0.23, 0.93],  // purple
-      [0.86, 0.15, 0.47],  // pink
-      [0.655, 0.545, 0.98], // lavender
-      [0.96, 0.28, 0.71],  // hot pink
-      [0.42, 0.16, 0.85],  // deep purple
+      [0.49, 0.23, 0.93],
+      [0.86, 0.15, 0.47],
+      [0.655, 0.545, 0.98],
+      [0.96, 0.28, 0.71],
+      [0.42, 0.16, 0.85],
     ]
 
     for (let i = 0; i < count; i++) {
-      // Spread across full screen
       positions[i * 3] = (Math.random() - 0.5) * 60
       positions[i * 3 + 1] = (Math.random() - 0.5) * 40
       positions[i * 3 + 2] = (Math.random() - 0.5) * 30
@@ -32,10 +30,8 @@ function FullScreenDots() {
       colors[i * 3] = c[0]
       colors[i * 3 + 1] = c[1]
       colors[i * 3 + 2] = c[2]
-
-      sizes[i] = Math.random() * 2 + 0.5
     }
-    return { positions, colors, sizes }
+    return { positions, colors }
   }, [])
 
   useFrame((state) => {
@@ -185,7 +181,6 @@ function Scene() {
       <MainOrb />
       <OrbitRings />
 
-      {/* Floating shapes spread */}
       <FloatingShape position={[-4,2,-2]} color="#db2777" shape="torus" speed={0.8} />
       <FloatingShape position={[4,-1,-1]} color="#7c3aed" shape="octahedron" speed={1.2} />
       <FloatingShape position={[-3,-2,-3]} color="#a78bfa" shape="box" speed={0.6} />
@@ -250,6 +245,24 @@ export default function Hero3D() {
     return () => window.removeEventListener('mousemove', handleMouse)
   }, [])
 
+  const handleDownloadCV = () => {
+    fetch('/resume.pdf')
+      .then(res => res.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'Chandru_Resume.pdf'
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+      })
+      .catch(() => {
+        window.open('/resume.pdf', '_blank')
+      })
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -276,7 +289,7 @@ export default function Hero3D() {
       gap: '40px',
     }}>
 
-      {/* Ambient glow effects */}
+      {/* Ambient glow */}
       <div style={{
         position: 'absolute', top: '10%', left: '5%',
         width: '400px', height: '400px',
@@ -292,7 +305,7 @@ export default function Hero3D() {
         animation: 'glowPulse 5s ease-in-out infinite reverse',
       }} />
 
-      {/* LEFT — Text content */}
+      {/* LEFT — Text */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -303,7 +316,7 @@ export default function Hero3D() {
           transition: 'transform 0.15s ease',
         }}
       >
-        {/* Available badge */}
+        {/* Badge */}
         <motion.div variants={itemVariants}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '10px',
@@ -332,7 +345,7 @@ export default function Hero3D() {
           }}
         >Hello World 👋 I'm a</motion.p>
 
-        {/* Main title */}
+        {/* Title */}
         <motion.h1 variants={itemVariants}
           style={{
             fontFamily: "'Bricolage Grotesque', sans-serif",
@@ -365,24 +378,27 @@ export default function Hero3D() {
         <motion.div variants={itemVariants}
           style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '60px' }}
         >
-          <motion.a href="/resume.pdf" download="Chandru_Resume.pdf"
+          {/* Download CV Button */}
+          <motion.button
+            onClick={handleDownloadCV}
             whileHover={{ scale: 1.06, y: -5, boxShadow: '0 25px 50px rgba(124,58,237,0.5)' }}
             whileTap={{ scale: 0.97 }}
             style={{
               background: 'linear-gradient(135deg, #7c3aed, #db2777)',
               color: 'white', padding: '15px 34px',
               borderRadius: '14px', fontWeight: '800',
-              fontSize: '0.92rem', textDecoration: 'none',
+              fontSize: '0.92rem',
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               boxShadow: '0 10px 30px rgba(124,58,237,0.35)',
               fontFamily: "'Bricolage Grotesque', sans-serif",
-              position: 'relative', overflow: 'hidden',
+              border: 'none', cursor: 'pointer',
             }}
           >
             <motion.span animate={{ y: [0,-3,0] }} transition={{ duration: 1.5, repeat: Infinity }}>⬇</motion.span>
             Download CV
-          </href=>
+          </motion.button>
 
+          {/* View Work */}
           <motion.a href="#projects"
             whileHover={{ scale: 1.06, y: -5, borderColor: 'rgba(124,58,237,0.6)', background: 'rgba(124,58,237,0.1)' }}
             whileTap={{ scale: 0.97 }}
@@ -399,6 +415,7 @@ export default function Hero3D() {
             }}
           >🚀 View Work</motion.a>
 
+          {/* Hire Me */}
           <motion.a href="#contact"
             whileHover={{ scale: 1.06, y: -5, boxShadow: '0 25px 50px rgba(219,39,119,0.4)' }}
             whileTap={{ scale: 0.97 }}
