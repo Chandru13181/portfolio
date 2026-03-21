@@ -164,7 +164,7 @@ function Hero() {
         >
           
           {/* Primary btn */}
-          <motion.a href="/resume.pdf" download="Chandru_Resume.pdf" target="_blank" rel="noreferrer"
+             <motion.a href="/resume.pdf" download="Chandru_Resume.pdf"
             whileHover={{
               scale:1.06, y:-6,
               boxShadow:'0 30px 60px rgba(124,58,237,0.45)',
