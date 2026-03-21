@@ -25,8 +25,8 @@ function AIChatWidget({ onClose }) {
     setMessages(m => [...m, { role: 'user', text: userMsg }])
     setLoading(true)
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
+      const res = await fetch('https://iridescent-lokum-f6b7ac.netlify.app/.netlify/functions/chat', {
+                method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
