@@ -365,7 +365,7 @@ export default function Hero3D() {
         <motion.div variants={itemVariants}
           style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginBottom: '60px' }}
         >
-          <motion.a href="/cv.pdf" download
+          <motion.a href="/resume.pdf" download="Chandru_Resume.pdf"
             whileHover={{ scale: 1.06, y: -5, boxShadow: '0 25px 50px rgba(124,58,237,0.5)' }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -381,7 +381,7 @@ export default function Hero3D() {
           >
             <motion.span animate={{ y: [0,-3,0] }} transition={{ duration: 1.5, repeat: Infinity }}>⬇</motion.span>
             Download CV
-          </motion.a>
+          </href=>
 
           <motion.a href="#projects"
             whileHover={{ scale: 1.06, y: -5, borderColor: 'rgba(124,58,237,0.6)', background: 'rgba(124,58,237,0.1)' }}
