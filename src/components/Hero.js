@@ -164,22 +164,10 @@ function Hero() {
         >
           
           {/* Primary btn */}
-  <motion.a 
-  href="https://chandruwebdeveloper.netlify.app/resume.pdf"
-  download="Chandru_Resume.pdf"
-  onClick={(e) => {
-    e.preventDefault();
-    fetch('https://chandruwebdeveloper.netlify.app/resume.pdf')
-      .then(res => res.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'Chandru_Resume.pdf';
-        link.click();
-        window.URL.revokeObjectURL(url);
-      });
-  }}
+  {/* Primary btn */}
+<motion.a
+  href="/resume.pdf"
+  download
             whileHover={{
               scale:1.06, y:-6,
               boxShadow:'0 30px 60px rgba(124,58,237,0.45)',
