@@ -87,8 +87,10 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
         max_tokens: 512,
-        system: SYSTEM_PROMPT,
-        messages: cleanMessages,
+          messages: [
+    { role: 'system', content: SYSTEM_PROMPT },
+    ...cleanMessages
+  ],
       }),
     })
 
