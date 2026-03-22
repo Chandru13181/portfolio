@@ -94,7 +94,7 @@ export default function Navbar() {
               background:"rgba(6,2,16,0.9)", zIndex:1 }}/>
 
             {/* Photo */}
-            <img src="/photo.jpg" alt="Chandru"
+            <img src={process.env.PUBLIC_URL + "/photo.jpg"}alt="Chandru"
               style={{ width:38, height:38, borderRadius:"50%",
                 objectFit:"cover", objectPosition:"top center",
                 position:"absolute", inset:2, zIndex:2, display:"block" }}/>
@@ -237,7 +237,7 @@ export default function Navbar() {
                   background:"conic-gradient(#7c3aed,#db2777,#a855f7,#f472b6,#7c3aed)", zIndex:0 }}/>
               <div style={{ position:"absolute", inset:1.5, borderRadius:"50%",
                 background:"rgba(8,3,18,0.9)", zIndex:1 }}/>
-              <motion.img src="/photo.jpg" alt="Chandru"
+              <motion.img  src={process.env.PUBLIC_URL + "/photo.jpg"} alt="Chandru"
                 initial={{ scale:0.8 }} animate={{ scale:1 }}
                 transition={{ type:"spring", stiffness:260, damping:20 }}
                 style={{ width:100, height:100, borderRadius:"50%",
@@ -335,7 +335,7 @@ export default function Navbar() {
                   <motion.div animate={{ rotate:360 }} transition={{ duration:6, repeat:Infinity, ease:"linear" }}
                     style={{ position:"absolute", inset:-2, borderRadius:"50%",
                       background:"conic-gradient(#7c3aed,#db2777,#a855f7,#7c3aed)", zIndex:0 }}/>
-                  <img src="/photo.jpg" alt="Chandru"
+                  <img src={process.env.PUBLIC_URL + "/photo.jpg"} alt="Chandru"
                     style={{ width:42, height:42, borderRadius:"50%",
                       objectFit:"cover", objectPosition:"top center",
                       position:"relative", zIndex:1,
