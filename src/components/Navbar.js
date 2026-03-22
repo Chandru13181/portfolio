@@ -372,14 +372,23 @@ export default function Navbar() {
 
       <style>{`
         @keyframes cursorBlink{0%,100%{border-color:#7c3aed}50%{border-color:transparent}}
+
+        /* TABLET */
         @media(max-width:900px){
           nav>ul{ display:none!important }
           .hamburger-btn{ display:flex!important }
           nav{ padding:0 24px!important }
         }
+        /* MOBILE */
+        @media(max-width:768px){
+          nav>ul{ display:none!important }
+          .hamburger-btn{ display:flex!important }
+          nav{ padding:0 20px!important }
+          #photo-popup{ left:12px!important; right:12px!important; min-width:unset!important; top:70px!important }
+        }
         @media(max-width:480px){
-          nav{ padding:0 16px!important; height:60px!important }
-          #photo-popup{ left:12px!important; right:12px!important; min-width:unset!important }
+          nav{ padding:0 14px!important; height:58px!important }
+          nav span[style*="1.15rem"]{ font-size:1rem!important }
         }
       `}</style>
     </>
