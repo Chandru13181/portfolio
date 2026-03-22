@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import chandruPhoto from "../assets/photo.jpg"
 
 const navLinks = ["About","Skills","Projects","Experience","Contact"]
 
@@ -17,7 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", fn)
   }, [])
 
-  /* pulse the ring every 4s to attract attention */
   useEffect(() => {
     const id = setInterval(() => {
       setPulse(true)
@@ -26,7 +26,6 @@ export default function Navbar() {
     return () => clearInterval(id)
   }, [])
 
-  /* close popup on outside click */
   useEffect(() => {
     if (!photoPopup) return
     const fn = (e) => {
@@ -46,7 +45,7 @@ export default function Navbar() {
     <>
       <motion.nav
         initial={{ y:-80, opacity:0 }}
-        animate={{ y:0,   opacity:1 }}
+        animate={{ y:0, opacity:1 }}
         transition={{ duration:0.7, type:"spring", bounce:0.25 }}
         style={{
           display:"flex", justifyContent:"space-between",
@@ -93,8 +92,10 @@ export default function Navbar() {
             <div style={{ position:"absolute", inset:1.5, borderRadius:"50%",
               background:"rgba(6,2,16,0.9)", zIndex:1 }}/>
 
-            {/* Photo */}
-            <img src={process.env.PUBLIC_URL + "/photo.jpg"}alt="Chandru"
+            {/* ✅ Photo — chandruPhoto import */}
+            <img
+              src={chandruPhoto}
+              alt="Chandru"
               style={{ width:38, height:38, borderRadius:"50%",
                 objectFit:"cover", objectPosition:"top center",
                 position:"absolute", inset:2, zIndex:2, display:"block" }}/>
@@ -163,7 +164,8 @@ export default function Navbar() {
           ))}
 
           {/* Resume button */}
-          <motion.li initial={{ opacity:0, scale:0.6 }} animate={{ opacity:1, scale:1 }} transition={{ delay:0.75, type:"spring", bounce:0.45 }} style={{ marginLeft:10 }}>
+          <motion.li initial={{ opacity:0, scale:0.6 }} animate={{ opacity:1, scale:1 }}
+            transition={{ delay:0.75, type:"spring", bounce:0.45 }} style={{ marginLeft:10 }}>
             <motion.a href="/resume.pdf" download
               whileHover={{ scale:1.05, y:-2, boxShadow:"0 12px 28px rgba(124,58,237,0.45)" }}
               whileTap={{ scale:0.95 }}
@@ -173,7 +175,6 @@ export default function Navbar() {
                 textDecoration:"none", display:"inline-flex", alignItems:"center", gap:6,
                 boxShadow:"0 6px 18px rgba(124,58,237,0.3)",
                 whiteSpace:"nowrap", position:"relative", overflow:"hidden" }}>
-              {/* shine sweep */}
               <motion.span
                 animate={{ left:["-80%","180%"] }}
                 transition={{ duration:2.5, repeat:Infinity, repeatDelay:1.5 }}
@@ -208,20 +209,20 @@ export default function Navbar() {
         {photoPopup && (
           <motion.div id="photo-popup"
             initial={{ opacity:0, scale:0.82, y:-8 }}
-            animate={{ opacity:1, scale:1,    y:0  }}
-            exit={{    opacity:0, scale:0.82, y:-8 }}
+            animate={{ opacity:1, scale:1, y:0 }}
+            exit={{ opacity:0, scale:0.82, y:-8 }}
             transition={{ type:"spring", stiffness:320, damping:26 }}
             style={{ position:"fixed", top:76, left:48, zIndex:9999,
               background:"rgba(8,3,18,0.97)", backdropFilter:"blur(32px)",
               border:"1px solid rgba(124,58,237,0.28)", borderRadius:22,
               padding:"22px 20px 18px",
-              boxShadow:"0 28px 64px rgba(0,0,0,0.65), 0 0 0 1px rgba(124,58,237,0.1)",
+              boxShadow:"0 28px 64px rgba(0,0,0,0.65)",
               display:"flex", flexDirection:"column", alignItems:"center", gap:14,
               minWidth:210 }}>
 
             {/* Close btn */}
             <motion.button onClick={()=>setPhotoPopup(false)}
-              whileHover={{ scale:1.1, background:"rgba(255,255,255,0.14)" }}
+              whileHover={{ scale:1.1 }}
               style={{ position:"absolute", top:10, right:10,
                 background:"rgba(255,255,255,0.07)", border:"none",
                 color:"rgba(255,255,255,0.45)", width:26, height:26,
@@ -237,14 +238,18 @@ export default function Navbar() {
                   background:"conic-gradient(#7c3aed,#db2777,#a855f7,#f472b6,#7c3aed)", zIndex:0 }}/>
               <div style={{ position:"absolute", inset:1.5, borderRadius:"50%",
                 background:"rgba(8,3,18,0.9)", zIndex:1 }}/>
-              <motion.img  src={process.env.PUBLIC_URL + "/photo.jpg"} alt="Chandru"
+
+              {/* ✅ Popup photo — chandruPhoto import */}
+              <motion.img
+                src={chandruPhoto}
+                alt="Chandru"
                 initial={{ scale:0.8 }} animate={{ scale:1 }}
                 transition={{ type:"spring", stiffness:260, damping:20 }}
                 style={{ width:100, height:100, borderRadius:"50%",
                   objectFit:"cover", objectPosition:"top center",
                   position:"relative", zIndex:2, display:"block",
                   margin:"2px" }}/>
-              {/* pulsing online dot */}
+
               <motion.div
                 animate={{ scale:[1,1.4,1], opacity:[1,0.5,1] }}
                 transition={{ duration:1.8, repeat:Infinity }}
@@ -256,56 +261,38 @@ export default function Navbar() {
 
             {/* Info */}
             <div style={{ textAlign:"center" }}>
-              <motion.div
-                initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }}
-                transition={{ delay:0.1 }}
-                style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.95rem",
-                  fontWeight:800, color:"white", marginBottom:3 }}>
+              <motion.div initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} transition={{ delay:0.1 }}
+                style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.95rem", fontWeight:800, color:"white", marginBottom:3 }}>
                 Chandru M
               </motion.div>
-              <motion.div
-                initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }}
-                transition={{ delay:0.16 }}
-                style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.7rem",
-                  color:"rgba(255,255,255,0.45)", marginBottom:10 }}>
+              <motion.div initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} transition={{ delay:0.16 }}
+                style={{ fontFamily:"'Inter',sans-serif", fontSize:"0.7rem", color:"rgba(255,255,255,0.45)", marginBottom:10 }}>
                 UI/UX Designer &amp; React Dev
               </motion.div>
-              {/* Available badge */}
-              <motion.div
-                initial={{ opacity:0, scale:0.8 }} animate={{ opacity:1, scale:1 }}
-                transition={{ delay:0.22, type:"spring" }}
+              <motion.div initial={{ opacity:0, scale:0.8 }} animate={{ opacity:1, scale:1 }} transition={{ delay:0.22, type:"spring" }}
                 style={{ display:"inline-flex", alignItems:"center", gap:6,
                   background:"rgba(16,185,129,0.1)", border:"1px solid rgba(16,185,129,0.22)",
                   borderRadius:50, padding:"4px 13px",
-                  fontFamily:"'Inter',sans-serif", fontSize:"0.67rem",
-                  fontWeight:700, color:"#10b981" }}>
-                <motion.div animate={{ scale:[1,1.5,1], opacity:[1,0.4,1] }}
-                  transition={{ duration:1.5, repeat:Infinity }}
+                  fontFamily:"'Inter',sans-serif", fontSize:"0.67rem", fontWeight:700, color:"#10b981" }}>
+                <motion.div animate={{ scale:[1,1.5,1], opacity:[1,0.4,1] }} transition={{ duration:1.5, repeat:Infinity }}
                   style={{ width:6, height:6, borderRadius:"50%", background:"#10b981" }}/>
                 Available for work
               </motion.div>
             </div>
 
-            {/* Quick action buttons */}
-            <motion.div
-              initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }}
-              transition={{ delay:0.28 }}
+            {/* Buttons */}
+            <motion.div initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} transition={{ delay:0.28 }}
               style={{ display:"flex", gap:8, width:"100%" }}>
-              <motion.a href="mailto:chandruwebdesigner@gmail.com"
-                whileHover={{ scale:1.04, y:-1 }}
-                style={{ flex:1, background:"rgba(124,58,237,0.1)",
-                  border:"1px solid rgba(124,58,237,0.22)", borderRadius:10,
-                  padding:"9px 0", textAlign:"center",
-                  fontFamily:"'Inter',sans-serif", fontSize:"0.7rem",
-                  fontWeight:700, color:"#a78bfa", textDecoration:"none" }}>
+              <motion.a href="mailto:chandruwebdesigner@gmail.com" whileHover={{ scale:1.04, y:-1 }}
+                style={{ flex:1, background:"rgba(124,58,237,0.1)", border:"1px solid rgba(124,58,237,0.22)",
+                  borderRadius:10, padding:"9px 0", textAlign:"center",
+                  fontFamily:"'Inter',sans-serif", fontSize:"0.7rem", fontWeight:700, color:"#a78bfa", textDecoration:"none" }}>
                 ✉️ Email
               </motion.a>
-              <motion.a href="/resume.pdf" download
-                whileHover={{ scale:1.04, y:-1 }}
-                style={{ flex:1, background:"linear-gradient(135deg,#7c3aed,#db2777)",
-                  border:"none", borderRadius:10, padding:"9px 0", textAlign:"center",
-                  fontFamily:"'Inter',sans-serif", fontSize:"0.7rem",
-                  fontWeight:700, color:"white", textDecoration:"none" }}>
+              <motion.a href="/resume.pdf" download whileHover={{ scale:1.04, y:-1 }}
+                style={{ flex:1, background:"linear-gradient(135deg,#7c3aed,#db2777)", border:"none",
+                  borderRadius:10, padding:"9px 0", textAlign:"center",
+                  fontFamily:"'Inter',sans-serif", fontSize:"0.7rem", fontWeight:700, color:"white", textDecoration:"none" }}>
                 ⬇ Resume
               </motion.a>
             </motion.div>
@@ -325,17 +312,18 @@ export default function Navbar() {
             <div style={{ padding:"16px 20px", display:"flex", flexDirection:"column", gap:4 }}>
 
               {/* Mobile profile row */}
-              <motion.div
-                initial={{ opacity:0, x:-16 }} animate={{ opacity:1, x:0 }}
-                style={{ display:"flex", alignItems:"center", gap:12,
-                  padding:"12px 14px", borderRadius:14,
-                  background:"rgba(124,58,237,0.07)",
+              <motion.div initial={{ opacity:0, x:-16 }} animate={{ opacity:1, x:0 }}
+                style={{ display:"flex", alignItems:"center", gap:12, padding:"12px 14px",
+                  borderRadius:14, background:"rgba(124,58,237,0.07)",
                   border:"1px solid rgba(124,58,237,0.14)", marginBottom:8 }}>
                 <div style={{ position:"relative" }}>
                   <motion.div animate={{ rotate:360 }} transition={{ duration:6, repeat:Infinity, ease:"linear" }}
                     style={{ position:"absolute", inset:-2, borderRadius:"50%",
                       background:"conic-gradient(#7c3aed,#db2777,#a855f7,#7c3aed)", zIndex:0 }}/>
-                  <img src={process.env.PUBLIC_URL + "/photo.jpg"} alt="Chandru"
+                  {/* ✅ Mobile photo — chandruPhoto import */}
+                  <img
+                    src={chandruPhoto}
+                    alt="Chandru"
                     style={{ width:42, height:42, borderRadius:"50%",
                       objectFit:"cover", objectPosition:"top center",
                       position:"relative", zIndex:1,
@@ -350,7 +338,6 @@ export default function Navbar() {
                 </div>
               </motion.div>
 
-              {/* Nav links */}
               {navLinks.map((link,i) => (
                 <motion.a key={link}
                   href={`#${link.toLowerCase()}`}
@@ -367,14 +354,12 @@ export default function Navbar() {
                 </motion.a>
               ))}
 
-              {/* Resume */}
               <motion.a href="/resume.pdf" download
                 initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }}
                 transition={{ delay:0.38 }}
                 whileHover={{ scale:1.02 }}
-                style={{ background:"linear-gradient(135deg,#7c3aed,#db2777)",
-                  color:"white", padding:"13px",
-                  borderRadius:12, fontWeight:800,
+                style={{ background:"linear-gradient(135deg,#7c3aed,#db2777)", color:"white",
+                  padding:"13px", borderRadius:12, fontWeight:800,
                   fontFamily:"'Inter',sans-serif", fontSize:"0.88rem",
                   textDecoration:"none", textAlign:"center", marginTop:8,
                   boxShadow:"0 8px 20px rgba(124,58,237,0.28)" }}>
@@ -387,14 +372,11 @@ export default function Navbar() {
 
       <style>{`
         @keyframes cursorBlink{0%,100%{border-color:#7c3aed}50%{border-color:transparent}}
-
-        /* Tablet */
         @media(max-width:900px){
           nav>ul{ display:none!important }
           .hamburger-btn{ display:flex!important }
           nav{ padding:0 24px!important }
         }
-        /* Mobile */
         @media(max-width:480px){
           nav{ padding:0 16px!important; height:60px!important }
           #photo-popup{ left:12px!important; right:12px!important; min-width:unset!important }
