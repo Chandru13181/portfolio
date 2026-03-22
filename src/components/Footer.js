@@ -63,7 +63,7 @@ const Footer = () => (
     <div style={{borderBottom:"1px solid rgba(124,58,237,.1)"}}>
       <div style={{padding:"40px 48px",textAlign:"center"}}>
         <div style={{fontFamily:"'Inter',sans-serif",fontSize:12,color:"#a855f7",letterSpacing:3,textTransform:"uppercase",marginBottom:10,fontWeight:600}}>✦ AVAILABLE FOR WORK</div>
-        <h3 style={{fontFamily:"'Syne',sans-serif",fontSize:"clamp(18px,2.5vw,28px)",fontWeight:800,color:"#fff",lineHeight:1.3,marginBottom:20}}>
+        <h3 style={{fontFamily:"'Syne',sans-serif",fontSize:"clamp(18px,2.5vw,25px)",fontWeight:800,color:"#fff",lineHeight:1.3,marginBottom:20}}>
           Got a project idea?{" "}
           <span style={{background:"linear-gradient(135deg,#a855f7,#f472b6)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>I'd love to hear it.</span>
         </h3>
@@ -83,7 +83,7 @@ const Footer = () => (
 
         {/* Brand */}
         <div>
-          <div style={{fontFamily:"'Syne',sans-serif",fontSize:18,fontWeight:800,letterSpacing:2,color:"#fff",marginBottom:12,display:"flex",alignItems:"center",gap:9}}>
+          <div style={{fontFamily:"'Syne',sans-serif",fontSize:20,fontWeight:700,letterSpacing:2,color:"#fff",marginBottom:12,display:"flex",alignItems:"center",gap:9}}>
             <div style={{width:32,height:32,borderRadius:7,background:"linear-gradient(135deg,#7c3aed,#ec4899)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>

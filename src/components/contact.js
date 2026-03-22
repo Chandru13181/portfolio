@@ -91,8 +91,8 @@ const Contact = () => {
 
           {/* ── Main heading → Inter 1.8rem (was 46px!) ── */}
           <h2 style={{
-            fontFamily:"'Inter',sans-serif",
-            fontSize:"clamp(1.5rem, 2.8vw, 1.9rem)",
+            fontFamily:"'Syne',sans-serif",
+            fontSize:"clamp(1rem, 2.5vw, 1.5rem)",
             fontWeight:800,
             color:"#fff",
             marginBottom:12,

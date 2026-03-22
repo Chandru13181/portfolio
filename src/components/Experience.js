@@ -68,8 +68,8 @@ function Experience() {
           <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg,#f59e0b,transparent)', display: 'block' }}/>
         </div>
         <h2 style={{
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)',
+          fontFamily: "'syne', sans-serif",
+          fontSize: 'clamp(1rem, 2.6vw, 1.5rem)',
           fontWeight: 800,
           color: 'white',
           lineHeight: 1.2,
