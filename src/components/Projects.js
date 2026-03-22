@@ -186,7 +186,7 @@ function Projects() {
                 {/* View case study → 0.8rem */}
                 <motion.div
                   style={{ display:"flex", alignItems:"center", gap:"5px", color:"#a78bfa", fontWeight:700,
-                    fontSize:"0.8rem", cursor:"pointer", fontFamily:"'Syne',sans-serif" }}
+                    fontSize:"0.8rem", cursor:"pointer", fontFamily:"'syne',sans-serif" }}
                   whileHover={{ x:5 }}>
                   View Case Study
                   <motion.span animate={{ x:[0,4,0] }} transition={{ duration:1.5, repeat:Infinity }}>→</motion.span>
@@ -215,7 +215,7 @@ function Projects() {
             fontSize:"0.88rem",
             border:"none",
             cursor:"pointer",
-            fontFamily:"'Syne',sans-serif",
+            fontFamily:"'Inter',sans-serif",
             boxShadow:"0 10px 30px rgba(124,58,237,0.3)",
             letterSpacing:"0.3px",
           }}>
