@@ -223,7 +223,7 @@ export default function Hero3D() {
           <motion.div variants={iV} style={{
             display:'inline-flex', alignItems:'center', gap:9,
             background:'rgba(124,58,237,0.12)', border:'1px solid rgba(124,58,237,0.28)',
-            borderRadius:50, padding:'8px 18px', marginBottom: isMobile ? 28 : 52, backdropFilter:'blur(10px)',
+            borderRadius:50, padding:'8px 18px', marginBottom:20, backdropFilter:'blur(10px)',
           }}>
             <motion.span animate={{scale:[1,1.5,1],opacity:[1,0.3,1]}} transition={{duration:1.5,repeat:Infinity}}
               style={{width:7,height:7,borderRadius:'50%',background:'#10b981',display:'block'}}/>
