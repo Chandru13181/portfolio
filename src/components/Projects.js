@@ -135,7 +135,7 @@ function Projects() {
                 <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"8px", gap:"8px" }}>
                   {/* Card title → 0.95rem Syne bold */}
                   <h3 style={{
-                    fontFamily:"'Syne',sans-serif",
+                    fontFamily:"'Inter',sans-serif",
                     fontSize:"0.95rem",
                     fontWeight:800,
                     color:"white",
