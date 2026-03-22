@@ -253,8 +253,8 @@ function About() {
           <h3 style={{
   marginBottom:'14px',
   fontFamily:"'Plus Jakarta Sans',sans-serif",
-  fontSize:'1.15rem',
-  fontWeight:'700',
+  fontSize:'1rem',
+  fontWeight:'800',
   color:'white',
   lineHeight:1.4,
 }}>Passionate Creative & Problem Solver</h3>

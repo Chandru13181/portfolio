@@ -146,7 +146,7 @@ const Skills = () => (
           What I Do
           <span style={{ width:28, height:1, background:"linear-gradient(90deg,#ec4899,#7c3aed)", display:"block" }}/>
         </div>
-        <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(28px,3.8vw,46px)", fontWeight:800, color:"#fff", marginBottom:14, lineHeight:1.15 }}>
+        <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(10px,3.8vw,15px)", fontWeight:800, color:"#fff", marginBottom:14, lineHeight:1.15 }}>
           My{" "}
           <span style={{ background:"linear-gradient(135deg,#a855f7,#f472b6)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
             Skills
