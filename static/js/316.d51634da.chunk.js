@@ -1,0 +1,2 @@
+"use strict";(globalThis.webpackChunkportfolio=globalThis.webpackChunkportfolio||[]).push([[316],{316(o,a,t){var c=t(64),p=t(914);const i=(0,c.Wp)({apiKey:"YOURKEY",authDomain:"portfolio-contact-acd79.firebaseapp.com",projectId:"portfolio-contact-acd79"});(0,p.aU)(i)}}]);
+//# sourceMappingURL=316.d51634da.chunk.js.map
