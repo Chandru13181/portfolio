@@ -182,35 +182,39 @@ export default function Hero3D() {
 
   return (
     <section style={{
-      minHeight:'100vh', position:'relative', overflow:'hidden',
+      /* KEY FIX: mobile = auto height, desktop = 100vh */
+      minHeight: isMobile ? 'auto' : '100vh',
+      position:'relative', overflow:'hidden',
       background:'linear-gradient(135deg,#050210 0%,#0a0514 40%,#0d0520 100%)',
     }}>
 
-      {/* 3D Canvas — full page background */}
-      <div style={{position:'absolute',inset:0,zIndex:0,pointerEvents:'none'}}>
-        <Canvas
-          camera={{position:[0,0,8],fov:70}}
-          style={{background:'transparent'}}
-          dpr={[1, isMobile ? 1 : 1.5]}
-          performance={{min:0.5}}>
+      {/* 3D Canvas */}
+      <div style={{
+        position: isMobile ? 'fixed' : 'absolute',
+        inset:0, zIndex:0, pointerEvents:'none',
+        /* mobile: full screen fixed bg */
+        height: isMobile ? '100vh' : '100%',
+      }}>
+        <Canvas camera={{position:[0,0,8],fov:70}} style={{background:'transparent'}}
+          dpr={[1, isMobile ? 1 : 1.5]} performance={{min:0.5}}>
           <Scene/>
         </Canvas>
       </div>
 
       {/* Glow orbs */}
-      <div style={{position:'absolute',top:'10%',left:'5%',width:320,height:320,background:'radial-gradient(circle,rgba(124,58,237,0.1),transparent 70%)',borderRadius:'50%',pointerEvents:'none',zIndex:1,animation:'glowPulse 4s ease-in-out infinite'}}/>
-      <div style={{position:'absolute',bottom:'10%',right:'5%',width:240,height:240,background:'radial-gradient(circle,rgba(219,39,119,0.08),transparent 70%)',borderRadius:'50%',pointerEvents:'none',zIndex:1,animation:'glowPulse 5s ease-in-out infinite reverse'}}/>
+      <div style={{position:'absolute',top:'10%',left:'5%',width:280,height:280,background:'radial-gradient(circle,rgba(124,58,237,0.1),transparent 70%)',borderRadius:'50%',pointerEvents:'none',zIndex:1,animation:'glowPulse 4s ease-in-out infinite'}}/>
+      <div style={{position:'absolute',bottom:'10%',right:'5%',width:200,height:200,background:'radial-gradient(circle,rgba(219,39,119,0.08),transparent 70%)',borderRadius:'50%',pointerEvents:'none',zIndex:1,animation:'glowPulse 5s ease-in-out infinite reverse'}}/>
 
-      {/* ── TEXT CONTENT ── */}
+      {/* TEXT CONTENT */}
       <div style={{
         position:'relative', zIndex:2,
-        minHeight:'100vh', display:'flex', alignItems:'center',
-        /* desktop: left-aligned | mobile: centered */
-        padding: isMobile ? '90px 20px 40px' : '0 80px',
+        /* KEY FIX: mobile padding tight, no min-height */
+        minHeight: isMobile ? 'auto' : '100vh',
+        display:'flex', alignItems:'center',
+        padding: isMobile ? '62px 20px 16px' : '0 80px',
         justifyContent: isMobile ? 'center' : 'flex-start',
       }}>
-        <motion.div
-          variants={cV} initial="hidden" animate="visible"
+        <motion.div variants={cV} initial="hidden" animate="visible"
           style={{
             maxWidth: isMobile ? '100%' : 560,
             width:'100%',
@@ -221,31 +225,29 @@ export default function Hero3D() {
 
           {/* Badge */}
           <motion.div variants={iV} style={{
-            display:'inline-flex', alignItems:'center', gap:9,
+            display:'inline-flex', alignItems:'center', gap:8,
             background:'rgba(124,58,237,0.12)', border:'1px solid rgba(124,58,237,0.28)',
-            borderRadius:50, padding:'8px 18px', marginBottom:20, backdropFilter:'blur(10px)',
+            borderRadius:50, padding:'7px 16px', marginBottom:14, backdropFilter:'blur(10px)',
           }}>
             <motion.span animate={{scale:[1,1.5,1],opacity:[1,0.3,1]}} transition={{duration:1.5,repeat:Infinity}}
-              style={{width:7,height:7,borderRadius:'50%',background:'#10b981',display:'block'}}/>
-            <span style={{color:'#a78bfa',fontWeight:700,fontSize:'0.82rem',fontFamily:"'Inter',sans-serif"}}>
+              style={{width:6,height:6,borderRadius:'50%',background:'#10b981',display:'block'}}/>
+            <span style={{color:'#a78bfa',fontWeight:700,fontSize:'0.8rem',fontFamily:"'Inter',sans-serif"}}>
               Available for Freelance ✨
             </span>
           </motion.div>
 
           {/* Greeting */}
           <motion.p variants={iV} style={{
-            color:'rgba(255,255,255,0.35)', fontSize:'0.72rem', fontWeight:700,
-            letterSpacing:'4px', textTransform:'uppercase', marginBottom:12,
+            color:'rgba(255,255,255,0.35)', fontSize:'0.7rem', fontWeight:700,
+            letterSpacing:'4px', textTransform:'uppercase', marginBottom:10,
             fontFamily:"'Inter',sans-serif",
-          }}>
-            Hello World 👋 I'm a
-          </motion.p>
+          }}>Hello World 👋 I'm a</motion.p>
 
           {/* H1 */}
           <motion.h1 variants={iV} style={{
             fontFamily:"'Inter',sans-serif",
-            fontSize: isMobile ? 'clamp(1.7rem,7vw,2.2rem)' : 'clamp(1.8rem,3vw,3rem)',
-            fontWeight:900, lineHeight:1.1, marginBottom:16, letterSpacing:'-1px',
+            fontSize: isMobile ? 'clamp(1.6rem,6.5vw,2rem)' : 'clamp(1.8rem,3vw,3rem)',
+            fontWeight:900, lineHeight:1.1, marginBottom:12, letterSpacing:'-0.5px',
           }}>
             <span style={{color:'white'}}>UI/UX </span>
             <span style={{background:'linear-gradient(135deg,#a78bfa,#f472b6)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>Designer</span>
@@ -256,9 +258,9 @@ export default function Hero3D() {
 
           {/* Subtitle */}
           <motion.p variants={iV} style={{
-            color:'rgba(255,255,255,0.45)', fontSize:'0.88rem', lineHeight:1.8,
+            color:'rgba(255,255,255,0.45)', fontSize:'0.84rem', lineHeight:1.75,
             maxWidth: isMobile ? '100%' : 420,
-            margin: isMobile ? '0 auto 28px' : '0 0 28px',
+            margin: isMobile ? '0 auto 18px' : '0 0 22px',
             fontFamily:"'Inter',sans-serif",
           }}>
             Crafting immersive 3D digital experiences that blend stunning aesthetics with seamless functionality ✨
@@ -266,50 +268,43 @@ export default function Hero3D() {
 
           {/* Buttons */}
           <motion.div variants={iV} style={{
-            display:'flex', gap:10, flexWrap:'wrap', marginBottom:32,
+            display:'flex', gap:8, flexWrap:'wrap',
+            marginBottom: isMobile ? 18 : 28,
             justifyContent: isMobile ? 'center' : 'flex-start',
           }}>
             <motion.button onClick={handleDownload}
-              whileHover={{scale:1.04,y:-3,boxShadow:'0 18px 40px rgba(124,58,237,0.45)'}}
-              whileTap={{scale:0.97}}
+              whileHover={{scale:1.04,y:-3}} whileTap={{scale:0.97}}
               style={{background:'linear-gradient(135deg,#7c3aed,#db2777)',color:'white',
-                padding:'11px 24px',borderRadius:12,fontWeight:700,fontSize:'0.85rem',
-                display:'inline-flex',alignItems:'center',gap:7,
-                boxShadow:'0 8px 22px rgba(124,58,237,0.3)',
+                padding:'10px 22px',borderRadius:11,fontWeight:700,fontSize:'0.83rem',
+                display:'inline-flex',alignItems:'center',gap:6,
+                boxShadow:'0 8px 20px rgba(124,58,237,0.3)',
                 fontFamily:"'Inter',sans-serif",border:'none',cursor:'pointer'}}>
               <motion.span animate={{y:[0,-3,0]}} transition={{duration:1.5,repeat:Infinity}}>⬇</motion.span>
               Download CV
             </motion.button>
-
-            <motion.a href="#projects"
-              whileHover={{scale:1.04,y:-3}}
-              whileTap={{scale:0.97}}
+            <motion.a href="#projects" whileHover={{scale:1.04,y:-3}} whileTap={{scale:0.97}}
               style={{background:'rgba(255,255,255,0.05)',backdropFilter:'blur(20px)',
-                color:'white',padding:'11px 24px',borderRadius:12,fontWeight:700,
-                fontSize:'0.85rem',textDecoration:'none',
-                display:'inline-flex',alignItems:'center',gap:7,
+                color:'white',padding:'10px 22px',borderRadius:11,fontWeight:700,
+                fontSize:'0.83rem',textDecoration:'none',
+                display:'inline-flex',alignItems:'center',gap:6,
                 border:'1.5px solid rgba(255,255,255,0.12)',
-                fontFamily:"'Inter',sans-serif",transition:'all 0.3s'}}>
+                fontFamily:"'Inter',sans-serif"}}>
               🚀 View Work
             </motion.a>
-
-            <motion.a href="#contact"
-              whileHover={{scale:1.04,y:-3,boxShadow:'0 18px 40px rgba(219,39,119,0.38)'}}
-              whileTap={{scale:0.97}}
+            <motion.a href="#contact" whileHover={{scale:1.04,y:-3}} whileTap={{scale:0.97}}
               style={{background:'rgba(219,39,119,0.1)',backdropFilter:'blur(20px)',
-                color:'#f472b6',padding:'11px 24px',borderRadius:12,fontWeight:700,
-                fontSize:'0.85rem',textDecoration:'none',
-                display:'inline-flex',alignItems:'center',gap:7,
+                color:'#f472b6',padding:'10px 22px',borderRadius:11,fontWeight:700,
+                fontSize:'0.83rem',textDecoration:'none',
+                display:'inline-flex',alignItems:'center',gap:6,
                 border:'1.5px solid rgba(219,39,119,0.22)',
-                fontFamily:"'Inter',sans-serif",transition:'box-shadow 0.3s'}}>
+                fontFamily:"'Inter',sans-serif"}}>
               💬 Hire Me
             </motion.a>
           </motion.div>
 
           {/* Stats */}
           <motion.div variants={iV} style={{
-            display:'flex', gap: isMobile ? 20 : 32,
-            flexWrap:'wrap',
+            display:'flex', gap: isMobile ? 18 : 32, flexWrap:'wrap',
             justifyContent: isMobile ? 'center' : 'flex-start',
           }}>
             {[
@@ -318,44 +313,55 @@ export default function Hero3D() {
               {num:'15+',label:'Clients',   color:'#a78bfa'},
               {num:'5⭐',label:'Rating',    color:'#f472b6'},
             ].map(({num,label,color},i)=>(
-              <motion.div key={i} whileHover={{y:-4,scale:1.05}} style={{textAlign:'center',cursor:'default'}}>
+              <motion.div key={i} whileHover={{y:-3,scale:1.04}} style={{textAlign:'center',cursor:'default'}}>
                 <motion.div style={{
                   fontFamily:"'Inter',sans-serif",
-                  fontSize: isMobile ? '1.4rem' : '1.7rem',
+                  fontSize: isMobile ? '1.25rem' : '1.7rem',
                   fontWeight:900, color, lineHeight:1,
                 }} animate={{opacity:[0.7,1,0.7]}} transition={{duration:2+i*0.5,repeat:Infinity}}>
                   {num}
                 </motion.div>
-                <div style={{color:'rgba(255,255,255,0.35)',fontSize:'0.62rem',fontWeight:600,
-                  marginTop:3,letterSpacing:'1px',textTransform:'uppercase',
-                  fontFamily:"'Inter',sans-serif"}}>
+                <div style={{color:'rgba(255,255,255,0.35)',fontSize:'0.6rem',fontWeight:600,
+                  marginTop:2,letterSpacing:'1px',textTransform:'uppercase',fontFamily:"'Inter',sans-serif"}}>
                   {label}
                 </div>
               </motion.div>
             ))}
           </motion.div>
 
+          {/* Scroll — inside content on mobile */}
+          {isMobile && (
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2}}
+              style={{display:'flex',flexDirection:'column',alignItems:'center',gap:5,marginTop:20}}>
+              <span style={{color:'rgba(255,255,255,0.25)',fontSize:'0.58rem',fontWeight:700,
+                letterSpacing:'3px',textTransform:'uppercase',fontFamily:"'Inter',sans-serif"}}>Scroll</span>
+              <motion.div animate={{y:[0,7,0]}} transition={{duration:1.5,repeat:Infinity}}
+                style={{width:20,height:32,border:'1.5px solid rgba(124,58,237,0.28)',
+                  borderRadius:10,display:'flex',justifyContent:'center',paddingTop:4}}>
+                <motion.div animate={{y:[0,9,0],opacity:[1,0,1]}} transition={{duration:1.5,repeat:Infinity}}
+                  style={{width:2,height:5,background:'linear-gradient(to bottom,#7c3aed,#db2777)',borderRadius:2}}/>
+              </motion.div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2}}
-        style={{position:'absolute',bottom:isMobile?16:24,left:'50%',
-          transform:'translateX(-50%)',display:'flex',flexDirection:'column',
-          alignItems:'center',gap:6,zIndex:10}}>
-        <motion.span animate={{opacity:[0.3,0.8,0.3]}} transition={{duration:2,repeat:Infinity}}
-          style={{color:'rgba(255,255,255,0.28)',fontSize:'0.6rem',fontWeight:700,
-            letterSpacing:'4px',textTransform:'uppercase',fontFamily:"'Inter',sans-serif"}}>
-          Scroll
-        </motion.span>
-        <motion.div animate={{y:[0,8,0]}} transition={{duration:1.5,repeat:Infinity}}
-          style={{width:22,height:36,border:'1.5px solid rgba(124,58,237,0.3)',
-            borderRadius:11,display:'flex',justifyContent:'center',paddingTop:5}}>
-          <motion.div animate={{y:[0,10,0],opacity:[1,0,1]}} transition={{duration:1.5,repeat:Infinity}}
-            style={{width:3,height:6,background:'linear-gradient(to bottom,#7c3aed,#db2777)',borderRadius:2}}/>
+      {/* Scroll — desktop only */}
+      {!isMobile && (
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.2}}
+          style={{position:'absolute',bottom:24,left:'50%',transform:'translateX(-50%)',
+            display:'flex',flexDirection:'column',alignItems:'center',gap:6,zIndex:10}}>
+          <motion.span animate={{opacity:[0.3,0.8,0.3]}} transition={{duration:2,repeat:Infinity}}
+            style={{color:'rgba(255,255,255,0.28)',fontSize:'0.6rem',fontWeight:700,
+              letterSpacing:'4px',textTransform:'uppercase',fontFamily:"'Inter',sans-serif"}}>Scroll</motion.span>
+          <motion.div animate={{y:[0,8,0]}} transition={{duration:1.5,repeat:Infinity}}
+            style={{width:22,height:36,border:'1.5px solid rgba(124,58,237,0.3)',
+              borderRadius:11,display:'flex',justifyContent:'center',paddingTop:5}}>
+            <motion.div animate={{y:[0,10,0],opacity:[1,0,1]}} transition={{duration:1.5,repeat:Infinity}}
+              style={{width:3,height:6,background:'linear-gradient(to bottom,#7c3aed,#db2777)',borderRadius:2}}/>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
 
       <style>{`
         @keyframes blink{0%,100%{border-color:#a78bfa}50%{border-color:transparent}}
