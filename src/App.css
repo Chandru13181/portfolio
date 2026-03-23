@@ -498,3 +498,16 @@ body {
   .about-text h3 { font-size: 1.2rem !important; }
   .contact-info h3 { font-size: 1.2rem !important; }
 }
+/* Mobile Hero Fix */
+@media (max-width: 768px) {
+  #hero section {
+    padding-top: 58px !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  #hero section > div:last-child > div {
+    padding-top: 0 !important;
+  }
+}

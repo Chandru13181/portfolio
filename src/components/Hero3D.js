@@ -83,11 +83,11 @@ function Scene({ isMobile }) {
       <pointLight position={[-10,-10,-10]} intensity={1} color="#db2777"/>
       <Stars radius={200} depth={80} count={isMobile?1500:4000} factor={5} saturation={0.3} fade speed={0.4}/>
       <FullScreenDots/>
-      <FloatingShape position={[-4,2,-3]}  color="#db2777" shape="torus"      speed={0.8}/>
-      <FloatingShape position={[1,-1,-2]}  color="#7c3aed" shape="octahedron" speed={1.1} scale={0.7}/>
-      <FloatingShape position={[-3,-3,-4]} color="#a78bfa" shape="box"        speed={0.6}/>
-      <FloatingShape position={[2,3,-3]}   color="#f472b6" shape="cone"       speed={0.9} scale={0.8}/>
-      <FloatingShape position={[-1,-4,-2]} color="#6d28d9" shape="sphere"     speed={0.85} scale={0.7}/>
+      {!isMobile && <FloatingShape position={[-4,2,-3]}  color="#db2777" shape="torus"      speed={0.8}/>}
+      {!isMobile && <FloatingShape position={[1,-1,-2]}  color="#7c3aed" shape="octahedron" speed={1.1} scale={0.7}/>}
+      {!isMobile && <FloatingShape position={[-3,-3,-4]} color="#a78bfa" shape="box"        speed={0.6}/>}
+      {!isMobile && <FloatingShape position={[2,3,-3]}   color="#f472b6" shape="cone"       speed={0.9} scale={0.8}/>}
+      {!isMobile && <FloatingShape position={[-1,-4,-2]} color="#6d28d9" shape="sphere"     speed={0.85} scale={0.7}/>}
       {!isMobile && <MainOrb/>}
       {!isMobile && <OrbitRings/>}
       {!isMobile && <FloatingShape position={[-9,3,-5]} color="#a78bfa" shape="sphere" speed={0.55} scale={0.45}/>}
@@ -182,7 +182,7 @@ export default function Hero3D() {
           <motion.p variants={iV} style={{color:'rgba(255,255,255,0.35)',fontSize:'0.62rem',
             fontWeight:700,letterSpacing:'3.5px',textTransform:'uppercase',
             marginBottom:8,fontFamily:"'Inter',sans-serif"}}>
-            Hello World 👋 I'm a
+          👋 I'm a
           </motion.p>
 
           <motion.h1 variants={iV} style={{fontFamily:"'Inter',sans-serif",
@@ -277,7 +277,7 @@ export default function Hero3D() {
           </motion.div>
           <motion.p variants={iV} style={{color:'rgba(255,255,255,0.35)',fontSize:'0.72rem',fontWeight:700,
             letterSpacing:'4px',textTransform:'uppercase',marginBottom:12,fontFamily:"'Inter',sans-serif"}}>
-            Hello World 👋 I'm a
+         👋 I'm a
           </motion.p>
           <motion.h1 variants={iV} style={{fontFamily:"'Inter',sans-serif",
             fontSize:'clamp(1.8rem,3vw,3rem)',fontWeight:900,lineHeight:1.1,marginBottom:16,letterSpacing:'-1px'}}>
